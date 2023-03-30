@@ -7,7 +7,7 @@ To play the game, simply click on the "Roll the Dice" button. The game will rand
 # Technical Details
 In this game, we use the Fisher-Yates shuffle algorithm to shuffle an array of six colors before selecting the first three colors as the result of the roll. This ensures that each color has an equal chance of being selected, resulting in a fair game.
 
-The game is built using HTML, CSS, and JavaScript. The index.html file contains the structure of the game's user interface. The style.css file contains the game's styles, such as the button and text colors. The script.js file contains the game's logic, such as the random selection of colors and the check for a winning or losing roll.
+The game is built using HTML, CSS, and JavaScript. The `index.html` file contains the structure of the game's user interface. The `style.css` file contains the game's styles, such as the button and text colors. The `script.js` file contains the game's logic, such as the random selection of colors and the check for a winning or losing roll.
 
 The game uses an array of colors to represent the dice, and the shuffle function from script.js randomly shuffles the colors each time the player clicks the "Roll" button. The rollThreeDice function then selects the first three colors from the shuffled array and returns them to the rollDice function, which displays them on the screen.
 
