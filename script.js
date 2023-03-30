@@ -4,7 +4,7 @@
     2: "blue",
     3: "green",
     4: "yellow",
-    5: "white",
+    5: "orange",
     6: "purple",
   };
 
@@ -19,7 +19,7 @@
       diceRolls
         .join(" ")
         .replace(
-          /(red|blue|green|yellow|white|purple)/g,
+          /(red|blue|green|yellow|orange|purple)/g,
           '<span style="color: $1">$1</span>'
         );
   }
