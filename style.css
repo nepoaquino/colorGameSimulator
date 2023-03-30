@@ -4,18 +4,18 @@ body {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 80px;
   color: aliceblue;
 }
 
 button {
   font-size: 1.2rem;
   width: 150px;
-  height: 100px;
+  height: 50px;
 }
 
 #result {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: aliceblue;
   margin-top: 30px;
 }
