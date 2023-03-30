@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roll the Dice</title>
+  </head>
+
+  <body>
+    <h1>COLOR GAME</h1>
+    <button onclick="rollDice()">Roll the Dice</button>
+    <p id="result"></p>
+
+    <script>
+      // Maps numbers to colors using an object
+      const colorMap = {
+          1: "red",
+          2: "blue",
+          3: "green",
+          4: "yellow",
+          5: "white",
+          6: "purple",
+      };
+
+      function mapToColor(num) {
+          return colorMap[num];
+      }
+
+      function rollDice() {
+          const diceRolls = rollThreeDice();
+          const resultEl = document.getElementById("result");
+          resultEl.innerText = "You rolled: " + diceRolls.join(", ");
+      }
+
+      function rollThreeDice() {
+          const diceRolls = [];
+          for (let i = 0; i < 3; i++) {
+              diceRolls.push(mapToColor(Math.floor(Math.random() * 6) + 1));
+          }
+          return diceRolls;
+      }
+    </script>
+  </body>
+</html>
