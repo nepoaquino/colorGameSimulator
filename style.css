@@ -13,10 +13,25 @@ button {
   width: 30vw;
   height: auto;
   border-radius: 1vw;
+  background-color: #0074d9;
+  color: white;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
 }
+
 button:hover {
   cursor: pointer;
+  background-color: #2ecc71;
+  transform: scale(1.05);
+  box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.3);
 }
+
+button:active {
+  transform: scale(0.95);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
 
 #result {
   font-size: 5vw;
