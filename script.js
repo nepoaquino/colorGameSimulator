@@ -1,17 +1,29 @@
-// Maps numbers to colors using an object
-const colorMap = {
+   // Maps numbers to colors using an object
+   const colorMap = {
     1: "red",
     2: "blue",
     3: "green",
     4: "yellow",
     5: "white",
-    6: "purple"
+    6: "purple",
   };
-  
+
   function mapToColor(num) {
     return colorMap[num];
   }
-  
+
+  function rollDice() {
+    const diceRolls = rollThreeDice();
+    const resultEl = document.getElementById("result");
+    resultEl.innerHTML = "You rolled: <br>" +
+      diceRolls
+        .join(" ")
+        .replace(
+          /(red|blue|green|yellow|white|purple)/g,
+          '<span style="color: $1">$1</span>'
+        );
+  }
+
   function rollThreeDice() {
     const diceRolls = [];
     for (let i = 0; i < 3; i++) {
@@ -19,7 +31,3 @@ const colorMap = {
     }
     return diceRolls;
   }
-  
-  const result = rollThreeDice();
- document.write("You rolled: " + result.join(", "));
-  
