@@ -1,71 +1,67 @@
 body {
-    text-align: center;
-    background-color: #111;
-  }
-  
+  text-align: center;
+  background-color: #111;
+}
+
+h1 {
+  font-size: 8vw;
+  color: aliceblue;
+}
+
+button {
+  font-size: 4vw;
+  width: 30vw;
+  height: auto;
+  border-radius: 1vw;
+}
+button:hover {
+  cursor: pointer;
+}
+
+#result {
+  font-size: 5vw;
+  color: aliceblue;
+  margin-top: 5vh;
+}
+
+span {
+  font-size: 6.5vw;
+}
+
+@media only screen and (max-width: 768px) {
   h1 {
-    font-size: 8vw;
-    color: aliceblue;
+    font-size: 12vw;
   }
-  
+
   button {
-    font-size: 4vw;
-    width: 30vw;
-    height: auto;
-    border-radius: 20px ;
+    font-size: 6vw;
+    width: 50vw;
   }
-  button:hover{
-      cursor: pointer;
-  }
-  
+
   #result {
-    font-size: 5vw;
-    color: aliceblue;
-    margin-top: 5vh;
+    font-size: 8vw;
   }
-  
-  span{
-      font-size: 6.5vw;
+
+  span {
+    font-size: 10vw;
   }
-  
-  
-  @media only screen and (max-width: 768px) {
-    h1 {
-      font-size: 12vw;
-    }
-    
-    button {
-      font-size: 6vw;
-      width: 50vw;
-    }
-    
-    #result {
-      font-size: 8vw;
-      margin-top: 10vh;
-    }
-    
-    span{
-        font-size: 10vw;
-    }
+}
+
+@media only screen and (max-width: 480px) {
+  h1 {
+    font-size: 16vw;
   }
-  
-  @media only screen and (max-width: 480px) {
-    h1 {
-      font-size: 16vw;
-    }
-    
-    button {
-      font-size: 8vw;
-      width: 60vw;
-    }
-    
-    #result {
-      font-size: 12vw;
-      margin-top: 15vh;
-    }
-    
-    span{
-        font-size: 14vw;
-    }
+
+  button {
+    font-size: 8vw;
+    width: 60vw;
   }
-  
+
+  #result {
+    font-size: 12vw;
+  }
+
+  span {
+    font-size: 14vw;
+  }
+}
