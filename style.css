@@ -51,6 +51,7 @@ span {
   button {
     font-size: 6vw;
     width: 50vw;
+     border-radius: 2vw;
   }
 
   #result {
@@ -70,6 +71,7 @@ span {
   button {
     font-size: 8vw;
     width: 60vw;
+     border-radius: 3vw;
   }
 
   #result {
