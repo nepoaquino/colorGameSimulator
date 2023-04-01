@@ -43,6 +43,10 @@ span {
   font-weight: 800;
 }
 
+svg {
+margin-left: 10px;
+}
+
 #history {
   display: none;
   margin-top: 20px;
