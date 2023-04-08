@@ -9,11 +9,17 @@ h1 {
   margin-top: 50px;
   font-size: 5rem;
   flex-wrap: nowrap;
-  background: linear-gradient(to right, #e52d27, #ff5858, #ffbd2f, #32cd32, #1e90ff, #a020f0); /* add gradient effect */
+  background: linear-gradient(to right,
+      #e52d27,
+      #ff5858,
+      #ffbd2f,
+      #32cd32,
+      #1e90ff,
+      #a020f0);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 4px 4px #ddd; /* add text shadow */
+  text-shadow: 4px 4px #ddd;
 }
 
 button {
@@ -30,6 +36,16 @@ button {
   letter-spacing: 1px;
 }
 
+svg {
+  width: 150px;
+  height: 150px;
+}
+
+#history-table svg {
+  width: 75px;
+  height: 75px;
+}
+
 button:hover {
   background-color: #5e5e5e;
 }
@@ -44,18 +60,13 @@ span {
 }
 
 svg {
-margin-left: 10px;
+  margin-left: 10px;
 }
 
 #history {
   display: none;
   margin-top: 20px;
-  height: 400px; /* set height for the table */
-  overflow-y: scroll; /* add scrollbar for y-axis */
-}
-
-#history::-webkit-scrollbar {
- display: none;
+  height: auto;
 }
 
 #history-table {
@@ -89,19 +100,29 @@ margin-left: 10px;
 }
 
 #history-table tr:hover {
-  background-color: #606060;
+  background-color: #444;
 }
-
 
 @media (max-width: 768px) {
   h1 {
     font-size: 4rem;
   }
+
   #result {
     font-size: 1.8rem;
   }
+
   #history-table th {
     font-size: 1.25rem;
- 
+  }
+
+  svg {
+    width: 70px;
+    height: 70px;
+  }
+
+  #history-table svg {
+    width: 35px;
+    height: 35px;
   }
 }
