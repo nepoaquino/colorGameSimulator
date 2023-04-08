@@ -19,7 +19,7 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 4px 4px #ddd;
+  text-shadow: 5px 5px #ddd;
 }
 
 button {
