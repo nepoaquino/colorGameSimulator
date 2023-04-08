@@ -9,13 +9,15 @@ h1 {
   margin-top: 50px;
   font-size: 5rem;
   flex-wrap: nowrap;
-  background: linear-gradient(to right,
-      #e52d27,
-      #ff5858,
-      #ffbd2f,
-      #32cd32,
-      #1e90ff,
-      #a020f0);
+  background: linear-gradient(
+    to right,
+    #e52d27,
+    #ff5858,
+    #ffbd2f,
+    #32cd32,
+    #1e90ff,
+    #a020f0
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -39,6 +41,8 @@ button {
 svg {
   width: 150px;
   height: 150px;
+  margin-left: 15px;
+  margin-top: 10px;
 }
 
 #history-table svg {
@@ -57,10 +61,6 @@ button:hover {
 
 span {
   font-weight: 800;
-}
-
-svg {
-  margin-left: 10px;
 }
 
 #history {
