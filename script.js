@@ -1,6 +1,6 @@
 "use strict";
 
-const colors = ["red", "blue", "green", "yellow", "#ddd", "purple"];
+const colors = ["red", "blue", "green", "yellow", "white", "purple"];
 const colorSvgs = Object.fromEntries(
   colors.map((color) => [
     color,
@@ -9,33 +9,33 @@ const colorSvgs = Object.fromEntries(
 );
 
 const history = [];
+let rolling = false;
 
 function rollDice() {
-  let resultColors = [];
-  for (let i = 0; i < 3; i++) {
-    const roll = Math.floor(Math.random() * 6) + 1;
-    resultColors.push(colors[roll - 1]);
-  }
-  const resultElement = document.getElementById("result");
+  if (rolling) return;
+  rolling = true;
+  setTimeout(() => (rolling = false), 2000);
+
+  const resultColors = Array.from(
+    { length: 3 },
+    () => colors[Math.floor(Math.random() * colors.length)]
+  );
   const resultHTML = resultColors.map((color) => colorSvgs[color]).join("");
-  resultElement.innerHTML = `You rolled: <br>${resultHTML}`;
+  document.getElementById("result").innerHTML = `You rolled: <br>${resultHTML}`;
 
-  // add the result to the history
-  const resultText = resultColors.join(" ");
-  history.unshift({
-    text: resultText,
-    html: resultHTML,
-  });
-
-  // update the history table
-  const historyTable = document.getElementById("history-table");
-  const newRow = document.createElement("tr");
-  newRow.innerHTML = `
-    <td>${history.length}</td>
-    <td>${resultHTML}</td>
-  `;
-  const tbody = historyTable.querySelector("tbody");
-  tbody.insertBefore(newRow, tbody.firstChild);
+  setTimeout(() => {
+    const newRow = document.createElement("tr");
+    newRow.innerHTML = `
+      <td>${history.unshift(resultColors.join(", ")) + 1}</td>
+      <td>${resultHTML}</td>
+    `;
+    document
+      .querySelector("#history-table tbody")
+      .insertBefore(
+        newRow,
+        document.querySelector("#history-table tbody").firstChild
+      );
+  }, 2000);
 }
 
 function shuffle(colors) {
@@ -50,16 +50,17 @@ function shuffle(colors) {
 function toggleHistory() {
   const historyElement = document.getElementById("history");
   const historyTable = document.getElementById("history-table");
+  const toggleBtn = document.querySelector("button:nth-of-type(2)");
 
   if (
     historyElement.style.display === "none" ||
-    historyElement.style.display === ""
+    !historyElement.style.display
   ) {
     // show the history
     historyElement.style.display = "block";
 
+    // create the table if it doesn't exist yet
     if (!historyTable.hasChildNodes()) {
-      // create the table if it doesn't exist yet
       historyTable.innerHTML = `
         <thead>
           <tr>
@@ -69,14 +70,14 @@ function toggleHistory() {
         </thead>
         <tbody>
           ${history
-            .map((item, index) => {
-              return `
+            .map(
+              (item, index) => `
             <tr>
               <td>${history.length - index}</td>
               <td>${item.html}</td>
             </tr>
-          `;
-            })
+          `
+            )
             .join("")}
         </tbody>
       `;
@@ -93,22 +94,25 @@ function toggleHistory() {
     const startPosition = window.pageYOffset;
     const distance = historyTablePosition - startPosition;
     const duration = 1000;
-    let start = null;
+
+    let start;
 
     function step(timestamp) {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      window.scrollTo(
-        0,
-        easeInOutCubic(progress, startPosition, distance, duration)
-      );
+      const progress = timestamp - start || 0;
+      const t = progress / duration;
+      window.scrollTo(0, easeInOutCubic(t, startPosition, distance, 1));
       if (progress < duration) window.requestAnimationFrame(step);
     }
 
-    window.requestAnimationFrame(step);
+    window.requestAnimationFrame((timestamp) => {
+      start = timestamp; // assign the timestamp to start
+      step(timestamp);
+      toggleBtn.textContent = "Hide History";
+    });
   } else {
     // hide the history
     historyElement.style.display = "none";
+    toggleBtn.textContent = "Show History";
   }
 }
 
