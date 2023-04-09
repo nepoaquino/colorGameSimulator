@@ -38,13 +38,13 @@ function rollDice() {
   tbody.insertBefore(newRow, tbody.firstChild);
 }
 
-function shuffle(array) {
+function shuffle(colors) {
   // Fisher-Yates shuffle algorithm
-  for (let i = array.length - 1; i > 0; i--) {
+  for (let i = colors.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [colors[i], colors[j]] = [colors[j], colors[i]];
   }
-  return array;
+  return colors;
 }
 
 function toggleHistory() {
