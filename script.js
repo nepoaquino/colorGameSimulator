@@ -11,9 +11,11 @@ const colorSvgs = Object.fromEntries(
 const history = [];
 
 function rollDice() {
-  const shuffledColors = shuffle(colors.concat(colors));
-  const [color1, color2, color3] = shuffledColors.slice(0, 3);
-  const resultColors = [color1, color2, color3];
+  let resultColors = [];
+  for (let i = 0; i < 3; i++) {
+    const roll = Math.floor(Math.random() * 6) + 1;
+    resultColors.push(colors[roll - 1]);
+  }
   const resultElement = document.getElementById("result");
   const resultHTML = resultColors.map((color) => colorSvgs[color]).join("");
   resultElement.innerHTML = `You rolled: <br>${resultHTML}`;
@@ -45,7 +47,6 @@ function shuffle(array) {
   return array;
 }
 
-
 function toggleHistory() {
   const historyElement = document.getElementById("history");
   const historyTable = document.getElementById("history-table");
@@ -67,15 +68,15 @@ function toggleHistory() {
       </thead>
       <tbody>
         ${history
-        .map((item, index) => {
-          return `
+          .map((item, index) => {
+            return `
           <tr>
             <td>${history.length - index}</td>
             <td>${item.html}</td>
           </tr>
         `;
-        })
-        .join("")}
+          })
+          .join("")}
       </tbody>
     `;
 
