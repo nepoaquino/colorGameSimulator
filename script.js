@@ -11,7 +11,7 @@ const colorSvgs = Object.fromEntries(
 const history = [];
 
 function rollDice() {
-  const shuffledColors = shuffle(colors);
+  const shuffledColors = shuffle(colors.concat(colors));
   const [color1, color2, color3] = shuffledColors.slice(0, 3);
   const resultColors = [color1, color2, color3];
   const resultElement = document.getElementById("result");
@@ -44,6 +44,7 @@ function shuffle(array) {
   }
   return array;
 }
+
 
 function toggleHistory() {
   const historyElement = document.getElementById("history");
