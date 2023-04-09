@@ -58,30 +58,34 @@ function toggleHistory() {
     // show the history
     historyElement.style.display = "block";
 
-    // add each item in the history to the table
-    historyTable.innerHTML = `
-      <thead>
-        <tr>
-          <th>Roll</th>
-          <th>Result</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${history
-          .map((item, index) => {
-            return `
+    if (!historyTable.hasChildNodes()) {
+      // create the table if it doesn't exist yet
+      historyTable.innerHTML = `
+        <thead>
           <tr>
-            <td>${history.length - index}</td>
-            <td>${item.html}</td>
+            <th>Roll</th>
+            <th>Result</th>
           </tr>
-        `;
-          })
-          .join("")}
-      </tbody>
-    `;
+        </thead>
+        <tbody>
+          ${history
+            .map((item, index) => {
+              return `
+            <tr>
+              <td>${history.length - index}</td>
+              <td>${item.html}</td>
+            </tr>
+          `;
+            })
+            .join("")}
+        </tbody>
+      `;
+    }
 
-    // append the table to the history element
-    historyElement.appendChild(historyTable);
+    // append the table to the history element if it's not already there
+    if (historyTable.parentElement !== historyElement) {
+      historyElement.appendChild(historyTable);
+    }
 
     // smoothly scroll to the history table
     const historyTablePosition =
