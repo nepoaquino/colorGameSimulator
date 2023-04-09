@@ -1,3 +1,28 @@
+@keyframes randomize {
+  0% {
+    fill: red;
+  }
+  20% {
+    fill: blue;
+  }
+  40% {
+    fill: green;
+  }
+  60% {
+    fill: yellow;
+  }
+  80% {
+    fill: white;
+  }
+  100% {
+    fill: purple;
+  }
+}
+
+#result svg rect {
+  animation: randomize 2s ease-in-out;
+}
+
 body {
   background-color: #1a1a1a;
   color: #eee;
@@ -125,33 +150,4 @@ span {
     width: 35px;
     height: 35px;
   }
-}
-
-@keyframes randomize {
-  0% {
-    fill: red;
-  }
-  20% {
-    fill: blue;
-  }
-  40% {
-    fill: green;
-  }
-  60% {
-    fill: yellow;
-  }
-  80% {
-    fill: #ddd;
-  }
-  100% {
-    fill: purple;
-  }
-}
-
-svg rect:not(#history-table rect) {
-  animation: randomize 2s ease-in-out;
-}
-
-#history-table rect:first-child {
-  animation: randomize 2s ease-in-out;
 }
