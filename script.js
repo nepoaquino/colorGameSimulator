@@ -26,7 +26,7 @@ function rollDice() {
   setTimeout(() => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-      <td>${history.unshift(resultColors.join(", ")) + 1}</td>
+      <td>${history.unshift(resultColors.join(", "))}</td>
       <td>${resultHTML}</td>
     `;
     document
