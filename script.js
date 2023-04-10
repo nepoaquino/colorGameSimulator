@@ -8,26 +8,48 @@ const colorSvgs = Object.fromEntries(
   ])
 );
 
+let selectedColors = [];
+
+function selectColor(color) {
+  if (selectedColors.includes(color)) {
+    selectedColors = selectedColors.filter((c) => c !== color);
+  } else {
+    selectedColors.push(color);
+  }
+}
+
 const history = [];
 let rolling = false;
 
 function rollDice() {
   if (rolling) return;
   rolling = true;
-  setTimeout(() => (rolling = false), 2000);
+  setTimeout(() => (rolling = false), 6500);
+
+  if (selectedColors.length === 0) {
+    alert("Please select at least one color.");
+    rolling = false;
+    return;
+  }
+
+  // Hide the svgPlaceHolder div if rolling is true
+  const svgPlaceHolder = document.getElementById("svgPlaceHolder");
+  svgPlaceHolder.style.display = "none";
 
   const resultColors = Array.from(
     { length: 3 },
     () => colors[Math.floor(Math.random() * colors.length)]
   );
   const resultHTML = resultColors.map((color) => colorSvgs[color]).join("");
-  document.getElementById("result").innerHTML = `You rolled: <br>${resultHTML}`;
+  document.getElementById("result").innerHTML = `${resultHTML}`;
 
   setTimeout(() => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
       <td>${history.unshift(resultColors.join(", "))}</td>
       <td>${resultHTML}</td>
+      <td>${selectedColors.join(" ").toUpperCase()}</td>
+
     `;
     document
       .querySelector("#history-table tbody")
@@ -35,6 +57,31 @@ function rollDice() {
         newRow,
         document.querySelector("#history-table tbody").firstChild
       );
+
+    const popupMessagePlaceHolder = document.getElementById(
+      "popupMessagePlaceHolder"
+    );
+    popupMessagePlaceHolder.style.display = "none";
+
+    const popup = document.getElementById("popUp");
+    const popupMessage = document.getElementById("popupMessage");
+    popupMessage.textContent = resultColors.some((color) =>
+      selectedColors.includes(color)
+    )
+      ? "YOU WON!"
+      : "YOU LOSE :(";
+
+    popup.appendChild(popupMessage);
+    popup.style.display = "block";
+
+    setTimeout(() => {
+      popupMessage.textContent = "PICK A COLOR";
+      colorButtons.forEach((button) => {
+        button.classList.remove("active");
+      });
+    }, 4000);
+
+    selectedColors = [];
   }, 2000);
 }
 
@@ -58,30 +105,6 @@ function toggleHistory() {
   ) {
     // show the history
     historyElement.style.display = "block";
-
-    // create the table if it doesn't exist yet
-    if (!historyTable.hasChildNodes()) {
-      historyTable.innerHTML = `
-        <thead>
-          <tr>
-            <th>Roll</th>
-            <th>Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          ${history
-            .map(
-              (item, index) => `
-            <tr>
-              <td>${history.length - index}</td>
-              <td>${item.html}</td>
-            </tr>
-          `
-            )
-            .join("")}
-        </tbody>
-      `;
-    }
 
     // append the table to the history element if it's not already there
     if (historyTable.parentElement !== historyElement) {
@@ -122,3 +145,11 @@ function easeInOutCubic(t, b, c, d) {
   t -= 2;
   return (c / 2) * (t * t * t + 2) + b;
 }
+
+const colorButtons = document.querySelectorAll(".color-btn");
+
+colorButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    button.classList.toggle("active");
+  });
+});
