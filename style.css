@@ -211,7 +211,7 @@ button:hover {
 }
 
 
-#color-selection button:hover,
+
 #color-selection button.active {
   -webkit-filter: brightness(500%);
   -ms-filter: brightness(500%);
