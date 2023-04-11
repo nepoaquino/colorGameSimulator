@@ -107,7 +107,7 @@ button:hover {
 }
 
 #history-table {
-  width: 95%;
+  width: 100%;
   max-width: 1000px;
   border-collapse: collapse;
   margin: 50px auto;
