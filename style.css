@@ -217,11 +217,16 @@ button:hover {
   -ms-filter: brightness(500%);
   filter: brightness(500%);
 
+
+}
+
+color-selection button.active {
+
+
   -webkit-transform: scale(1.11);
   -ms-transform: scale(1.11);
   transform: scale(1.11);
 }
-
 
   
 
