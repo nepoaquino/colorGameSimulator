@@ -216,7 +216,7 @@ button:hover {
   background-color: #8204d1;
 }
 
-#color-selection button:hover,
+
 #color-selection button.active {
   filter: brightness(600%);
 }
