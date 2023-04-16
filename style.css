@@ -74,7 +74,7 @@ svg {
   margin: 0 10px;
 }
 
-button:hover {
+#mainButtons button:hover {
   background-color: #5e5e5e;
 }
 
