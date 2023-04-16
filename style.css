@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 4rem;
   flex-wrap: nowrap;
   background: linear-gradient(
     to right,
@@ -20,6 +20,7 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-size: 320px;
   text-shadow: 5px 5px #ddd;
 }
 
@@ -31,19 +32,19 @@ button {
   background-color: #343434;
   color: #eee;
   border: none;
-  padding: 10px 20px;
-  margin: 10px;
-  border-radius: 5px;
+  padding: 10px 8px;
+  margin: 5px;
+  border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 svg {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
 }
 
 #svgPlaceHolder svg:nth-child(2) {
@@ -135,13 +136,14 @@ button:hover {
 }
 
 #popUp {
+  margin-top: -30px;
   margin-bottom: -30px;
   display: block;
-  font-size: 50px;
+  font-size: 2.5rem;
   font-weight: bold;
   color: transparent;
-  background: radial-gradient(
-    circle,
+  background: linear-gradient(
+    to left,
     #e52d27,
     #ff5858,
     #ffbd2f,
@@ -152,7 +154,7 @@ button:hover {
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  background-size: 300px;
+  background-size: 320px;
 }
 
 #color-selection {
@@ -162,73 +164,59 @@ button:hover {
   align-items: center;
 }
 
-#topButtons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#botButtons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 #color-selection button {
+  color: rgba(0, 0, 0, 0.7);
   width: 120px;
   height: 80px;
   padding: 10px;
   font-size: 18px;
   font-weight: bolder;
-  color: black;
-  border: none;
-  border-radius: 5px;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
   cursor: pointer;
+  user-select: none;
 }
 
-#topButtons button:first-child {
-  background-color: #ad0802;
+#color-selection div:first-child button:nth-child(1) {
+  background-color: #ad0802cc;
 }
 
-#topButtons button:nth-child(2) {
-  background-color: #005ab3;
+#color-selection div:first-child button:nth-child(2) {
+  background-color: #005ab3ce;
 }
 
-#topButtons button:nth-child(3) {
-  background-color: #069d06;
+#color-selection div:first-child button:nth-child(3) {
+  background-color: #069d06da;
 }
 
-#botButtons button:first-child {
-  background-color: #cc8b00;
+#color-selection div:last-child button:nth-child(1) {
+  background-color: #cc8b00f3;
 }
 
-#botButtons button:nth-child(2) {
-  background-color: #aeaaaa;
+#color-selection div:last-child button:nth-child(2) {
+  background-color: #aeaaaae0;
 }
 
-#botButtons button:last-child {
-  background-color: #8204d1;
+#color-selection div:last-child button:nth-child(3) {
+  background-color: #8204d1e5;
 }
 
-
+#color-selection button:hover {
+  -webkit-filter: brightness(200%);
+  -ms-filter: brightness(200%);
+  filter: brightness(200%);
+}
 
 #color-selection button.active {
   -webkit-filter: brightness(500%);
   -ms-filter: brightness(500%);
   filter: brightness(500%);
-
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 
-
-
-
-
-
-  
 
 
 @media (max-width: 900px) {
