@@ -8,8 +8,8 @@ body {
 h1 {
   font-size: 4rem;
   flex-wrap: nowrap;
-  background: linear-gradient(
-    to right,
+  background: radial-gradient(
+    circle,
     #e52d27,
     #ff5858,
     #ffbd2f,
@@ -20,9 +20,23 @@ h1 {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 320px;
+  background-size: 500px;
   text-shadow: 5px 5px #ddd;
+  animation: color-change 20s ease-in-out infinite;
 }
+
+@keyframes color-change {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 #mainButtons {
   margin-bottom: 20px;
@@ -142,8 +156,8 @@ button:hover {
   font-size: 2.5rem;
   font-weight: bold;
   color: transparent;
-  background: linear-gradient(
-    to left,
+  background: radial-gradient(
+    circle,
     #e52d27,
     #ff5858,
     #ffbd2f,
@@ -154,8 +168,22 @@ button:hover {
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  background-size: 320px;
+  background-size: 800px;
+  animation: color-change 10s ease-in-out infinite;
 }
+
+@keyframes color-change {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 #color-selection {
   display: flex;
@@ -215,9 +243,6 @@ button:hover {
   -ms-transform: scale(1.05);
   transform: scale(1.05);
 }
-
-
-
 
 @media (max-width: 900px) {
   body {
