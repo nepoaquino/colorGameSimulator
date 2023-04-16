@@ -149,8 +149,8 @@ button:hover {
 }
 
 #popUp {
-  margin-top: -30px;
-  margin-bottom: -30px;
+  margin-top: -10px;
+  margin-bottom: -25px;
   display: block;
   font-size: 2.5rem;
   font-weight: bold;
@@ -247,7 +247,7 @@ button:hover {
     font-size: 60%;
   }
   h1 {
-    font-size: 3.6rem;
+    font-size: 3.5rem;
   }
   button {
     font-size: 0.72rem;
@@ -269,7 +269,7 @@ button:hover {
     margin: 0 6px;
   }
   #history-table {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
   #history-table th {
     padding: 6px;
@@ -279,14 +279,14 @@ button:hover {
     padding-bottom: 7.2px;
   }
   #popUp {
-    font-size: 30px;
-    background-size: 180px;
+    font-size: 1.7rem;
+    background-size: 200px;
   }
   #color-selection button {
-    width: 72px;
-    height: 48px;
-    font-size: 10.8px;
+    width: 80px;
+    height: 50px;
+    font-size: 14px;
     padding: 6px;
-    border-radius: 3px;
+   
   }
 }
