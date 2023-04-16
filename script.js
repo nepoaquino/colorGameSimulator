@@ -32,6 +32,18 @@ function rollDice() {
     return;
   }
 
+  if (selectedColors.length > 3) {
+    alert("You can only select up to 3 colors");
+    rolling = false;
+    return;
+  }
+
+  // Disable color buttons
+  const colorButtons = document.querySelectorAll(".color-btn");
+  colorButtons.forEach((button) => {
+    button.disabled = true;
+  });
+
   // Hide the svgPlaceHolder div if rolling is true
   const svgPlaceHolder = document.getElementById("svgPlaceHolder");
   svgPlaceHolder.style.display = "none";
@@ -79,7 +91,12 @@ function rollDice() {
       colorButtons.forEach((button) => {
         button.classList.remove("active");
       });
-    }, 4000);
+
+      // Re-enable color buttons
+      colorButtons.forEach((button) => {
+        button.disabled = false;
+      });
+    }, 3000);
 
     selectedColors = [];
   }, 2000);
