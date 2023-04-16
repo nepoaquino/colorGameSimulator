@@ -37,7 +37,6 @@ h1 {
   }
 }
 
-
 #mainButtons {
   margin-bottom: 20px;
 }
@@ -184,7 +183,6 @@ button:hover {
   }
 }
 
-
 #color-selection {
   display: flex;
   flex-direction: column;
@@ -193,7 +191,7 @@ button:hover {
 }
 
 #color-selection button {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(0, 0, 0, 0.9);
   width: 120px;
   height: 80px;
   padding: 10px;
@@ -222,7 +220,7 @@ button:hover {
 }
 
 #color-selection div:last-child button:nth-child(2) {
-  background-color: #aeaaaae0;
+  background-color: #aeaaaae7;
 }
 
 #color-selection div:last-child button:nth-child(3) {
