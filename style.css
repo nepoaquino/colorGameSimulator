@@ -258,19 +258,19 @@ svg {
     margin: 0 9px;
   }
   #history-table svg {
-    width: 45px;
-    height: 45px;
-    margin: 0 6px;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
   }
   #history-table {
     font-size: 1rem;
   }
   #history-table th {
-    padding: 6px;
+    padding: 5px;
   }
   #history-table td {
-    padding-top: 7.2px;
-    padding-bottom: 7.2px;
+    padding-top: 7px;
+    padding-bottom: 7px;
   }
   #popUp {
     font-size: 1.7rem;
