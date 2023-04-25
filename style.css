@@ -258,9 +258,9 @@ svg {
     margin: 0 9px;
   }
   #history-table svg {
-    width: 40px;
-    height: 40px;
-    margin: 0 5px;
+    width: 35px;
+    height: 35px;
+    margin: 0 4px;
   }
   #history-table {
     font-size: 1rem;
@@ -269,8 +269,8 @@ svg {
     padding: 5px;
   }
   #history-table td {
-    padding-top: 7px;
-    padding-bottom: 7px;
+    padding-top: 6px;
+    padding-bottom: 6px;
   }
   #popUp {
     font-size: 1.7rem;
