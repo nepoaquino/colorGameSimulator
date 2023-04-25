@@ -260,10 +260,10 @@ svg {
   #history-table svg {
     width: 35px;
     height: 35px;
-    margin: 0 4px;
+    margin: 0 3px;
   }
   #history-table {
-    font-size: 1rem;
+    font-size: 0.7rem;
   }
   #history-table th {
     padding: 5px;
