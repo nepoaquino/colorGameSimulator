@@ -1,4 +1,4 @@
-https://neppy3250.github.io/colorGameSimulator/
+https://nepoaquino.github.io/colorGameSimulator/
 # COLOR GAME SIMULATOR
 This is a simple dice roll game where the player rolls three dice and tries to get three of the same color. The game uses six different colors: red, blue, green, yellow, orange, and purple.
 
