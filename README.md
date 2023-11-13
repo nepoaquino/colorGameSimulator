@@ -1,6 +1,5 @@
 https://nepoaquino.github.io/colorGameSimulator/
 # COLOR GAME SIMULATOR
-This is a simple dice roll game where the player rolls three dice and tries to get three of the same color. The game uses six different colors: red, blue, green, yellow, orange, and purple.
 
 # How to Play
 To play the game, simply click on the "Roll the Dice" button. The game will randomly select three colors and display them on the screen. If all three colors match, the player wins the game. If not, the player loses and can try again by clicking the "Roll" button.
