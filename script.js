@@ -1,5 +1,6 @@
 "use strict";
 
+// Constants
 const colors = ["red", "blue", "green", "yellow", "white", "purple"];
 const colorSvgs = Object.fromEntries(
   colors.map((color) => [
@@ -8,68 +9,68 @@ const colorSvgs = Object.fromEntries(
   ])
 );
 
+// State
 let selectedColors = [];
-
-function selectColor(color) {
-  if (selectedColors.includes(color)) {
-    selectedColors = selectedColors.filter((c) => c !== color);
-  } else {
-    selectedColors.push(color);
-  }
-}
-
 const history = [];
 let rolling = false;
 
+// Functions
+
+// Toggle the selection of a color
+function selectColor(color) {
+  selectedColors.includes(color)
+    ? (selectedColors = selectedColors.filter((c) => c !== color))
+    : selectedColors.push(color);
+}
+
+// Handle dice roll
 function rollDice() {
   if (rolling) return;
   rolling = true;
   setTimeout(() => (rolling = false), 6500);
 
-  if (selectedColors.length === 0) {
-    alert("Please select at least one color.");
-    rolling = false;
-    return;
-  }
-
-  if (selectedColors.length > 3) {
-    alert("You can only select up to 3 colors");
+  // Check selected colors
+  if (selectedColors.length === 0 || selectedColors.length > 3) {
+    alert(
+      selectedColors.length === 0
+        ? "Please select at least one color."
+        : "You can only select up to 3 colors"
+    );
     rolling = false;
     return;
   }
 
   // Disable color buttons
   const colorButtons = document.querySelectorAll(".color-btn");
-  colorButtons.forEach((button) => {
-    button.disabled = true;
-  });
+  colorButtons.forEach((button) => (button.disabled = true));
 
   // Hide the svgPlaceHolder div if rolling is true
   const svgPlaceHolder = document.getElementById("svgPlaceHolder");
   svgPlaceHolder.style.display = "none";
 
+  // Generate result colors and corresponding HTML
   const resultColors = Array.from(
     { length: 3 },
     () => colors[Math.floor(Math.random() * colors.length)]
   );
   const resultHTML = resultColors.map((color) => colorSvgs[color]).join("");
-  document.getElementById("result").innerHTML = `${resultHTML}`;
+  document.getElementById("result").innerHTML = resultHTML;
 
+  // Create an array of SVGs for the selected colors
+  const guessHTML = selectedColors.map((color) => colorSvgs[color]).join("");
+
+  // Update history after a delay
   setTimeout(() => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-      <td>${history.unshift(resultColors.join(", "))}</td>
-      <td>${resultHTML}</td>
-      <td>${selectedColors.join(" ").toUpperCase()}</td>
+        <td>${history.unshift(resultColors.join(", "))}</td>
+        <td>${resultHTML}</td>
+        <td>${guessHTML}</td>
+      `;
+    const historyTableBody = document.querySelector("#history-table tbody");
+    historyTableBody.insertBefore(newRow, historyTableBody.firstChild);
 
-    `;
-    document
-      .querySelector("#history-table tbody")
-      .insertBefore(
-        newRow,
-        document.querySelector("#history-table tbody").firstChild
-      );
-
+    // Show result popup
     const popupMessagePlaceHolder = document.getElementById(
       "popupMessagePlaceHolder"
     );
@@ -86,49 +87,47 @@ function rollDice() {
     popup.appendChild(popupMessage);
     popup.style.display = "block";
 
+    // Reset after a delay
     setTimeout(() => {
       popupMessage.textContent = "PICK A COLOR";
-      colorButtons.forEach((button) => {
-        button.classList.remove("active");
-      });
+      colorButtons.forEach((button) => button.classList.remove("active"));
 
       // Re-enable color buttons
-      colorButtons.forEach((button) => {
-        button.disabled = false;
-      });
+      colorButtons.forEach((button) => (button.disabled = false));
     }, 3000);
 
     selectedColors = [];
   }, 2000);
 }
 
-function shuffle(colors) {
-  // Fisher-Yates shuffle algorithm
-  for (let i = colors.length - 1; i > 0; i--) {
+// Fisher-Yates shuffle algorithm
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [colors[i], colors[j]] = [colors[j], colors[i]];
+    [array[i], array[j]] = [array[j], array[i]];
   }
-  return colors;
+  return array;
 }
 
+// Toggle history visibility
 function toggleHistory() {
   const historyElement = document.getElementById("history");
   const historyTable = document.getElementById("history-table");
   const toggleBtn = document.querySelector("button:nth-of-type(2)");
 
   if (
-    historyElement.style.display === "none" ||
-    !historyElement.style.display
+    !historyElement.style.display ||
+    historyElement.style.display === "none"
   ) {
-    // show the history
+    // Show the history
     historyElement.style.display = "block";
 
-    // append the table to the history element if it's not already there
+    // Append the table to the history element if it's not already there
     if (historyTable.parentElement !== historyElement) {
       historyElement.appendChild(historyTable);
     }
 
-    // smoothly scroll to the history table
+    // Smoothly scroll to the history table
     const historyTablePosition =
       historyTable.getBoundingClientRect().top + window.pageYOffset;
     const startPosition = window.pageYOffset;
@@ -150,12 +149,13 @@ function toggleHistory() {
       toggleBtn.textContent = "Hide History";
     });
   } else {
-    // hide the history
+    // Hide the history
     historyElement.style.display = "none";
     toggleBtn.textContent = "Show History";
   }
 }
 
+// Easing function for smooth scrolling
 function easeInOutCubic(t, b, c, d) {
   t /= d / 2;
   if (t < 1) return (c / 2) * t * t * t + b;
@@ -163,8 +163,8 @@ function easeInOutCubic(t, b, c, d) {
   return (c / 2) * (t * t * t + 2) + b;
 }
 
+// Event listeners for color buttons
 const colorButtons = document.querySelectorAll(".color-btn");
-
 colorButtons.forEach((button) => {
   button.addEventListener("click", () => {
     button.classList.toggle("active");
