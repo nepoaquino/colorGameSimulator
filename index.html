@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A fun color game simulator." />
+    <meta name="keywords" content="color, game, simulator, fun" />
+    <meta name="author" content="Nepo Aquino" />
+    <title>Color Game Simulator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="A fun color game simulator." />
-  <meta name="keywords" content="color, game, simulator, fun" />
-  <meta name="author" content="Nepo Aquino" />
-  <title>Color Game Simulator</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <h1>COLOR GAME</h1>
-  <div id="mainButtons">
-    <button onclick="rollDice()">Roll the Dice</button>
-    <button onclick="toggleHistory()">Show History</button>
-  </div>
-  <div id="svgPlaceHolder">
-    <svg>
-      <rect width="200" height="200" style="fill: white" />
-    </svg>
-    <svg>
-      <rect width="200" height="200" style="fill: white" />
-    </svg>
-    <svg>
-      <rect width="200" height="200" style="fill: white" />
-    </svg>
-  </div>
-
-  <div id="result"></div>
-
-  <div id="popUp">
-    <p id="popupMessagePlaceHolder">PICK A COLOR</p>
-    <p id="popupMessage"></p>
-  </div>
-
-  <div id="color-selection">
-    <div>
-      <button class="color-btn" onclick="selectColor('red')">Red</button>
-      <button class="color-btn" onclick="selectColor('blue')">Blue</button>
-      <button class="color-btn" onclick="selectColor('green')">Green</button>
+  <body>
+    <h1>COLOR GAME</h1>
+    <div id="mainButtons">
+      <button onclick="rollDice()">Roll the Dice</button>
+      <button onclick="toggleHistory()">Show History</button>
     </div>
-    <div>
-      <button class="color-btn" onclick="selectColor('yellow')">Yellow</button>
-      <button class="color-btn" onclick="selectColor('white')">White</button>
-      <button class="color-btn" onclick="selectColor('purple')">Purple</button>
+    <div id="svgPlaceHolder">
+      <svg>
+        <rect width="200" height="200" style="fill: white" />
+      </svg>
+      <svg>
+        <rect width="200" height="200" style="fill: white" />
+      </svg>
+      <svg>
+        <rect width="200" height="200" style="fill: white" />
+      </svg>
     </div>
-  </div>
 
-  <div id="history">
-    <table id="history-table">
-      <thead>
-        <tr>
-          <th>Roll</th>
-          <th>Result</th>
-          <th>Guess</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
+    <div id="result"></div>
 
-  <script src="script.js"></script>
-</body>
+    <div id="popUp">
+      <p id="popupMessagePlaceHolder">PICK A COLOR</p>
+      <p id="popupMessage"></p>
+    </div>
 
+    <div id="color-selection">
+      <div>
+        <button class="color-btn" onclick="selectColor('red')">Red</button>
+        <button class="color-btn" onclick="selectColor('blue')">Blue</button>
+        <button class="color-btn" onclick="selectColor('green')">Green</button>
+      </div>
+      <div>
+        <button class="color-btn" onclick="selectColor('yellow')">
+          Yellow
+        </button>
+        <button class="color-btn" onclick="selectColor('white')">White</button>
+        <button class="color-btn" onclick="selectColor('purple')">
+          Purple
+        </button>
+      </div>
+    </div>
+
+    <div id="history">
+      <table id="history-table">
+        <thead>
+          <tr>
+            <th>Roll</th>
+            <th>Result</th>
+            <th>Guess</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #1a1a1a;
   color: #eee;
@@ -17,12 +21,13 @@ h1 {
     #1e90ff,
     #a020f0
   );
-  background-clip: text;
+
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-size: 500px;
+  background-size: 200% 100%;
   text-shadow: 5px 5px #ddd;
-  animation: color-change 20s ease-in-out infinite;
+  animation: color-change 10s ease-in-out infinite;
 }
 
 @keyframes color-change {
@@ -167,8 +172,8 @@ svg {
   -webkit-background-clip: text;
   -moz-background-clip: text;
   background-clip: text;
-  background-size: 800px;
-  animation: color-change 10s ease-in-out infinite;
+  background-size: 200% 100%;
+  animation: color-change 5s ease-in-out infinite;
 }
 
 @keyframes color-change {
@@ -200,7 +205,6 @@ svg {
   border: 1px solid whitesmoke;
   border-radius: 10px;
   cursor: pointer;
-  user-select: none;
 }
 
 #color-selection div:first-child button:nth-child(1) {
@@ -274,13 +278,11 @@ svg {
   }
   #popUp {
     font-size: 1.7rem;
-    background-size: 200px;
   }
   #color-selection button {
     width: 80px;
     height: 50px;
     font-size: 14px;
     padding: 6px;
-   
   }
 }
