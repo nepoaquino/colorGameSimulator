@@ -14,7 +14,7 @@ let currency = document.querySelector("#currency");
 let currentCurrency = 1000;
 
 // Display the updated currency
-currency.innerHTML = currentCurrency;
+// currency.innerHTML = currentCurrency;
 
 // State
 let selectedColors = [];
@@ -114,33 +114,33 @@ function rollDice() {
     // Total bet amount
     const totalBet = selectedColors.length * 100;
 
-    if (correctGuesses === selectedColors.length) {
-      // All bets correct
-      currencyChange = totalBet;
-      currentCurrency += currencyChange;
-      popupMessagePlaceHolder.textContent = `+ ${currencyChange} CURRENCY!`;
-    } else if (correctGuesses === 0) {
-      // All bets incorrect
-      currentCurrency -= totalBet;
-      popupMessagePlaceHolder.textContent = `- ${totalBet} CURRENCY!`;
-    } else {
-      // Handling multiple correct guesses when betting on a single color
-      const selectedColor = selectedColors[0]; // Assuming only one color is selected
+    // if (correctGuesses === selectedColors.length) {
+    //   // All bets correct
+    //   currencyChange = totalBet;
+    //   currentCurrency += currencyChange;
+    //   popupMessagePlaceHolder.textContent = `+ ${currencyChange} CURRENCY!`;
+    // } else if (correctGuesses === 0) {
+    //   // All bets incorrect
+    //   currentCurrency -= totalBet;
+    //   popupMessagePlaceHolder.textContent = `- ${totalBet} CURRENCY!`;
+    // } else {
+    //   // Handling multiple correct guesses when betting on a single color
+    //   const selectedColor = selectedColors[0]; // Assuming only one color is selected
 
-      // Count occurrences of the selected color in the result
-      const occurrences = resultColors.filter(
-        (color) => color === selectedColor
-      ).length;
+    //   // Count occurrences of the selected color in the result
+    //   const occurrences = resultColors.filter(
+    //     (color) => color === selectedColor
+    //   ).length;
 
-      // Adjust currency based on occurrences of selected color
-      currentCurrency += occurrences * totalBet;
-      popupMessagePlaceHolder.textContent = `+ ${
-        occurrences * totalBet
-      } CURRENCY!`;
-    }
+    //   // Adjust currency based on occurrences of selected color
+    //   currentCurrency += occurrences * totalBet;
+    //   popupMessagePlaceHolder.textContent = `+ ${
+    //     occurrences * totalBet
+    //   } CURRENCY!`;
+    // }
 
     // Display the updated currency
-    currency.innerHTML = currentCurrency;
+    // currency.innerHTML = currentCurrency;
 
     const popup = document.getElementById("popUp");
     popup.appendChild(popupMessagePlaceHolder);
