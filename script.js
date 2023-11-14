@@ -74,22 +74,20 @@ function rollDice() {
     const popupMessagePlaceHolder = document.getElementById(
       "popupMessagePlaceHolder"
     );
-    popupMessagePlaceHolder.style.display = "none";
 
     const popup = document.getElementById("popUp");
-    const popupMessage = document.getElementById("popupMessage");
-    popupMessage.textContent = resultColors.some((color) =>
+
+    popupMessagePlaceHolder.textContent = resultColors.some((color) =>
       selectedColors.includes(color)
     )
       ? "YOU WON!"
       : "YOU LOSE :(";
 
-    popup.appendChild(popupMessage);
-    popup.style.display = "block";
+    popup.appendChild(popupMessagePlaceHolder);
 
     // Reset after a delay
     setTimeout(() => {
-      popupMessage.textContent = "PICK A COLOR";
+      popupMessagePlaceHolder.textContent = "PICK A COLOR";
       colorButtons.forEach((button) => button.classList.remove("active"));
 
       // Re-enable color buttons
