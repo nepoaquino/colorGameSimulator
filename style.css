@@ -60,6 +60,11 @@ button {
   letter-spacing: 1px;
 }
 
+button:hover,
+button:active{
+  transform:scale(1.1);
+}
+
 svg {
   width: 120px;
   height: 120px;
@@ -81,10 +86,6 @@ rect {
   width: 75px;
   height: 75px;
   margin: 0 10px;
-}
-
-#mainButtons button:hover {
-  background-color: #5e5e5e;
 }
 
 @keyframes randomize {
