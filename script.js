@@ -9,6 +9,13 @@ const colorSvgs = Object.fromEntries(
   ])
 );
 
+//Game Currency
+let currency = document.querySelector("#currency");
+let currentCurrency = 1000;
+
+// Display the updated currency
+currency.innerHTML = currentCurrency;
+
 // State
 let selectedColors = [];
 const history = [];
@@ -22,6 +29,34 @@ function selectColor(color) {
     ? (selectedColors = selectedColors.filter((c) => c !== color))
     : selectedColors.push(color);
 }
+
+// Calculate the number of correctly guessed colors
+function countCorrectGuesses(resultColors, selectedColors) {
+  const frequencyMap = {};
+
+  // Count frequency of each color in the result
+  for (const color of resultColors) {
+    if (!frequencyMap[color]) {
+      frequencyMap[color] = 1;
+    } else {
+      frequencyMap[color]++;
+    }
+  }
+
+  let correctGuesses = 0;
+
+  // Count correct guesses based on frequency map
+  for (const color of selectedColors) {
+    if (frequencyMap[color] && frequencyMap[color] > 0) {
+      correctGuesses++;
+      frequencyMap[color]--;
+    }
+  }
+
+  return correctGuesses;
+}
+
+// ... (previous code remains unchanged)
 
 // Handle dice roll
 function rollDice() {
@@ -63,26 +98,51 @@ function rollDice() {
   setTimeout(() => {
     const newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td>${history.unshift(resultColors.join(", "))}</td>
-        <td>${resultHTML}</td>
-        <td>${guessHTML}</td>
-      `;
+      <td>${history.unshift(resultColors.join(", "))}</td>
+      <td>${resultHTML}</td>
+      <td>${guessHTML}</td>
+    `;
     const historyTableBody = document.querySelector("#history-table tbody");
     historyTableBody.insertBefore(newRow, historyTableBody.firstChild);
 
-    // Show result popup
-    const popupMessagePlaceHolder = document.getElementById(
-      "popupMessagePlaceHolder"
-    );
+    // Calculate the number of correctly guessed colors
+    const correctGuesses = countCorrectGuesses(resultColors, selectedColors);
+
+    // Calculate the currency change based on the outcome
+    let currencyChange = 0;
+
+    // Total bet amount
+    const totalBet = selectedColors.length * 100;
+
+    if (correctGuesses === selectedColors.length) {
+      // All bets correct
+      currencyChange = totalBet;
+      currentCurrency += currencyChange;
+      popupMessagePlaceHolder.textContent = `+ ${currencyChange} CURRENCY!`;
+    } else if (correctGuesses === 0) {
+      // All bets incorrect
+      currentCurrency -= totalBet;
+      popupMessagePlaceHolder.textContent = `- ${totalBet} CURRENCY!`;
+    } else {
+      // Handling multiple correct guesses when betting on a single color
+      const selectedColor = selectedColors[0]; // Assuming only one color is selected
+
+      // Count occurrences of the selected color in the result
+      const occurrences = resultColors.filter(
+        (color) => color === selectedColor
+      ).length;
+
+      // Adjust currency based on occurrences of selected color
+      currentCurrency += occurrences * totalBet;
+      popupMessagePlaceHolder.textContent = `+ ${
+        occurrences * totalBet
+      } CURRENCY!`;
+    }
+
+    // Display the updated currency
+    currency.innerHTML = currentCurrency;
 
     const popup = document.getElementById("popUp");
-
-    popupMessagePlaceHolder.textContent = resultColors.some((color) =>
-      selectedColors.includes(color)
-    )
-      ? "YOU WON!"
-      : "YOU LOSE :(";
-
     popup.appendChild(popupMessagePlaceHolder);
 
     // Reset after a delay
@@ -97,6 +157,8 @@ function rollDice() {
     selectedColors = [];
   }, 2000);
 }
+
+// ... (remaining code remains unchanged)
 
 // Fisher-Yates shuffle algorithm
 function shuffle(array) {
